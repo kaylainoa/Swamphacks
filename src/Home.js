@@ -14,8 +14,15 @@ const Home = () => {
       <h1>Website Name</h1>
       <div className = "tagline">What are we?</div>
       <img src={pfp} className="pfp_pic"/>
-
     </header>
+    <div className="About-Us">
+      <h2> About Us</h2>
+
+
+
+
+
+    </div>
     </div>
   )
 }

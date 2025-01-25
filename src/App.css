@@ -13,8 +13,14 @@
   }
 }
 
+h1, h2 {
+  font-family: DM Serif Display;
+  font-weight: bold;
+  color: #fb6f92;
+}
+
 .App-header {
-  background-color: #282c34;
+  background-color: #ffe5ec ;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,7 +41,7 @@
 }
 
 .navbar{
-  background-color: pink;
+  background-color: white;
   height: 50px;
   display: flex;
   .myLogo{
