@@ -19,6 +19,9 @@ h1, h2 {
   color: #fb6f92;
 }
 
+h2 {
+  font-size: 30px;
+}
 p {
   font-family: Poppins;
 }
@@ -43,6 +46,11 @@ p {
   outline: #ffff solid 5px;
 }
 
+.blank1 {
+  width: 250px;
+
+
+}
 
 .App-header {
   background-color: #ffe5ec ;
@@ -69,6 +77,19 @@ p {
   width: 50px;
 }
 
+.About-Us {
+  margin-left: 50px;
+  margin-right: 50px;
+  
+  display: flex;
+  flex-direction: row; /* Place text and image side by side */
+  justify-content: space-between; /* Space between the text and image */
+  gap: 20px; /* Add space between the text and image */
+}
+
+.about-image {
+  width: 40%;  /* Adjust width as needed */
+}
 
 .navbar{
   background-color: white;

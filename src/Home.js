@@ -4,6 +4,7 @@ import pfp from './Assets/react-pic.png';
 import anonymous from './Assets/anonymous.png';
 import doctor from './Assets/doctor.png';
 import US from './Assets/united-states.png';
+import blank from './Assets/fill-in-img.jpg';
 import logo from './logo.svg';
 import {Link} from 'react-router-dom';
 
@@ -33,13 +34,17 @@ const Home = () => {
         </div>
       </div>
       <div className="About-Us">
-        <h2> About Us</h2>
-        <p>At (Your Website Name), we’re committed to helping women easily access nearby abortion resources. 
-        Our platform connects women with safe, confidential healthcare providers, clinics, and support services,
-        offering up-to-date information to help them make informed decisions. We believe every woman deserves the 
-        right to choose, and our mission is to remove barriers to reproductive healthcare by providing trusted 
-        resources and support.</p>
-
+        <div className="About-content">
+          <h2> About Us</h2>
+          <p>At (Your Website Name), we’re committed to helping women easily access nearby abortion resources. 
+          Our platform connects women with safe, confidential healthcare providers, clinics, and support services,
+          offering up-to-date information to help them make informed decisions. We believe every woman deserves the 
+          right to choose, and our mission is to remove barriers to reproductive healthcare by providing trusted 
+          resources and support.</p>
+        </div>
+        <div className="about-image">
+          <img src={blank} className="blank1"/>
+        </div>
 
       </div>
     </div>
