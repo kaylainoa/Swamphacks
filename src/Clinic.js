@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; 
 import './Clinic.css';
+import ClinicFinder from ".//Components/ClinicFinder.js";
 
 export const Clinic = () => {
   const [searchTerm, setSearchTerm] = useState('');
