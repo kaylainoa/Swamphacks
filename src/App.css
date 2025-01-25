@@ -26,6 +26,12 @@ p {
   font-family: Poppins;
 }
 
+.App-header { 
+  background-image: url('Assets/women.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
 .Purpose {
   display: flex;
   justify-content: space-around;
@@ -77,14 +83,16 @@ p {
   width: 50px;
 }
 
+
+
 .About-Us {
   margin-left: 50px;
   margin-right: 50px;
-  
+
   display: flex;
-  flex-direction: row; /* Place text and image side by side */
-  justify-content: space-between; /* Space between the text and image */
-  gap: 20px; /* Add space between the text and image */
+  flex-direction: row; 
+  justify-content: space-between; 
+  gap: 20px; 
 }
 
 .about-image {

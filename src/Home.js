@@ -5,8 +5,10 @@ import anonymous from './Assets/anonymous.png';
 import doctor from './Assets/doctor.png';
 import US from './Assets/united-states.png';
 import blank from './Assets/fill-in-img.jpg';
+import homelanding from './Assets/women.jpg';
 import logo from './logo.svg';
 import {Link} from 'react-router-dom';
+
 
 const Home = () => {
   return (
@@ -16,8 +18,6 @@ const Home = () => {
       </div>
       <header className="App-header">
         <h1>Website Name</h1>
-        <div className = "tagline">What are we?</div>
-        <img src={pfp} className="pfp_pic"/>
       </header>
       <div className="Purpose">
         <div class="box" id="medical-prof">

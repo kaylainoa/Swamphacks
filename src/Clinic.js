@@ -1,54 +1,123 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import './Clinic.css';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-export const Clinic = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+const containerStyle = {
+  width: '100%',
+  height: '500px',
+};
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+const Clinic = () => {
+  const [zipCode, setZipCode] = useState('');
+  const [clinics, setClinics] = useState([]);
+  const [clinicFound, setClinicFound] = useState(null);
+  const [defaultMap, setDefaultMap] = useState({ lat: 27.994402, lng: -81.760254 });
+  const mapsApiKey = 'AIzaSyBaE61HadXfnURwrXP7uk9hM16qJNiyivk';
+
+  const geocodeZipCode = async (zip) => {
+    const geocoder = new window.google.maps.Geocoder();
+
+    geocoder.geocode({ address: zip }, (results, status) => {
+      if (status === 'OK') {
+        const location = results[0].geometry.location;
+        setDefaultMap({ lat: location.lat(), lng: location.lng() });
+        searchNearbyClinics(location);
+      } else {
+        alert('Geocode failed: ' + status);
+      }
+    });
+  };
+
+  const searchNearbyClinics = (location) => {
+    const service = new window.google.maps.places.PlacesService(document.createElement('div'));
+
+    const request = {
+      location: location,
+      radius: 5000, // 5 km radius
+      keyword: 'abortion clinic',
+    };
+
+    service.nearbySearch(request, (results, status) => {
+      if (status === 'OK') {
+        setClinics(results);
+      } else {
+        alert('No clinics found nearby.');
+      }
+    });
   };
 
   const handleSearch = () => {
-    // You can add logic to filter or search clinics based on the search term
-    console.log("Searching for clinics:", searchTerm);
+    if (!zipCode) {
+      alert('Please enter a valid zip code');
+      return;
+    }
+    geocodeZipCode(zipCode);
   };
 
   return (
-    
     <div className="clinic-container">
-        <div className="clinic_title">Clinics</div>
-        
-        
-        
-        {/* Search Bar */}
-        <div className="search-container">
-            <input 
-              type="text" 
-              className="search-bar" 
-              placeholder="Search for clinics..." 
-              value={searchTerm}
-              onChange={handleSearchChange} 
+      <div className="clinic_title">Clinics</div>
+
+      {/* Search Bar */}
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Enter Zip Code"
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
+        />
+        <button className="search-button" onClick={handleSearch}>
+          Search Clinics
+        </button>
+      </div>
+
+      {/* Map Integration */}
+      <LoadScript googleMapsApiKey={mapsApiKey} libraries={['places']}>
+        <GoogleMap mapContainerStyle={containerStyle} center={defaultMap} zoom={15}>
+          {clinics.map((clinic, index) => (
+            <Marker
+              key={index}
+              position={clinic.geometry.location}
+              onClick={() => setClinicFound(clinic)}
             />
-            <button className="search-button" onClick={handleSearch}>Search</button>
-        </div>
+          ))}
 
-        {/* Buttons */}
-        <div className="button-container">
-            <button className="button">Find Clinics Near Me</button>
-            <button className="button">Contact</button>
-        </div>
+          {clinicFound && (
+            <InfoWindow
+              position={clinicFound.geometry.location}
+              onCloseClick={() => setClinicFound(null)}
+            >
+              <div>
+                <h4>{clinicFound.name}</h4>
+                <p>{clinicFound.vicinity}</p>
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
+      </LoadScript>
 
-        {/* Clinic Info */}
-        <div className="clinic-info">
-            <div>Name: General Healthcare Clinic</div>
-            <div>Phone: 123-456-7890</div>
-            <div>Rating: 4.5 / 5</div>
-            <div>Services: General Healthcare, Vaccinations, Lab Tests</div>
-            <div>Hours: Mon-Fri: 9:00 AM - 5:00 PM</div>
-            <div>
-              Website: <a href="http://example.com" className="website-link">Visit Website</a>
-            </div>
-        </div>
+      {/* Clinic List */}
+      <div id="results" style={{ marginTop: '20px' }}>
+        {clinics.length > 0 ? (
+          <div>
+            <h3>Closest Clinics:</h3>
+            <ul>
+              {clinics.map((clinic, i) => (
+                <li key={i}>
+                  <strong>{clinic.name}</strong>
+                  <br />
+                  {clinic.vicinity}
+                  <br />
+                  <br />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <p>No clinics found</p>
+        )}
+      </div>
     </div>
   );
 };
