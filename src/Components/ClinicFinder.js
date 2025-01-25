@@ -29,6 +29,24 @@ const ClinicFinder = () => {
         });
     };
 
+    const searchNearbyClinics = (location) => {
+        const service = new window.google.maps.places.PlacesService(document.createElement('div'));
+        
+        const request = {
+          location: location,
+          radius: 5000,  // 5 km radius
+          keyword: 'abortion clinic',
+        };
+    
+        service.nearbySearch(request, (results, status) => {
+          if (status === 'OK') {
+            setClinic(results);
+          } else {
+            alert('No abortion clinics found nearby.');
+          }
+        });
+      };
+
     const handleSearch = () => {
         if(!zipCode) {
             alert('Please enter a valid zip code');
