@@ -6,16 +6,13 @@ import doctor from './Assets/doctor.png';
 import US from './Assets/united-states.png';
 import blank from './Assets/fill-in-img.jpg';
 import homelanding from './Assets/women.jpg';
-import logo from './logo.svg';
 import {Link} from 'react-router-dom';
 
 
 const Home = () => {
   return (
     <div>
-      <div className='navbar'>
-      <img src={logo} className="myLogo"/>
-      </div>
+
       <header className="App-header">
         <h1>Website Name</h1>
       </header>
@@ -33,6 +30,7 @@ const Home = () => {
           <h3>United States Based</h3>
         </div>
       </div>
+
       <div className="About-Us">
         <div className="About-content">
           <h2> About Us</h2>
@@ -41,6 +39,7 @@ const Home = () => {
           offering up-to-date information to help them make informed decisions. We believe every woman deserves the 
           right to choose, and our mission is to remove barriers to reproductive healthcare by providing trusted 
           resources and support.</p>
+
         </div>
         <div className="about-image">
           <img src={blank} className="blank1"/>
