@@ -19,6 +19,29 @@ h1, h2 {
   color: #fb6f92;
 }
 
+p {
+  font-family: Poppins;
+}
+
+.Purpose {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+}
+
+.box {
+  text-align: center;
+  width: 30%;
+  padding: 15px;
+}
+
+#anonymous {
+  background-color: #ffe5ec;
+}
+
 .App-header {
   background-color: #ffe5ec ;
   min-height: 100vh;
