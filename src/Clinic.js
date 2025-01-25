@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import './Clinic.css';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-const containerStyle = {
-  width: '100%',
-  height: '500px',
-};
-
-const Clinic = () => {
-  const [zipCode, setZipCode] = useState('');
-  const [clinics, setClinics] = useState([]);
-  const [clinicFound, setClinicFound] = useState(null);
-  const [defaultMap, setDefaultMap] = useState({ lat: 27.994402, lng: -81.760254 });
-  const mapsApiKey = 'AIzaSyBaE61HadXfnURwrXP7uk9hM16qJNiyivk';
+export const Clinic = () => {
+  const [searchTerm, setSearchTerm] = useState('');
 
   const geocodeZipCode = async (zip) => {
     const geocoder = new window.google.maps.Geocoder();
