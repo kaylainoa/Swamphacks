@@ -27,7 +27,7 @@ p {
   display: flex;
   justify-content: space-around;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 50px;
 
 }
@@ -38,9 +38,11 @@ p {
   padding: 15px;
 }
 
-#anonymous {
+#anonymous, #medical-prof {
   background-color: #ffe5ec;
+  outline: #ffff solid 5px;
 }
+
 
 .App-header {
   background-color: #ffe5ec ;
@@ -62,6 +64,11 @@ p {
 .pfp_pic{
   width: 200px;
 }
+
+.anon-icon, .US-icon, .doctor-icon {
+  width: 50px;
+}
+
 
 .navbar{
   background-color: white;

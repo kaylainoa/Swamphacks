@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css';
 import pfp from './Assets/react-pic.png';
-import pfp from './Assets/anonymous.png';
-import pfp from './Assets/doctor.png';
-import pfp from './Assets/united-states.png';
+import anonymous from './Assets/anonymous.png';
+import doctor from './Assets/doctor.png';
+import US from './Assets/united-states.png';
 import logo from './logo.svg';
 import {Link} from 'react-router-dom';
 
@@ -20,15 +20,15 @@ const Home = () => {
       </header>
       <div className="Purpose">
         <div class="box" id="medical-prof">
-          <i class="fa-light fa-user-nurse"></i>
+          <img src={doctor} className="doctor-icon"/>
           <h3>Access to Medical Professionals</h3>
         </div>
         <div class="box" id="anonymous">
-          <img src={""}></img>
+          <img src={anonymous} className="anon-icon"/>
           <h3>Remain Anonymous</h3>
         </div>
         <div class="box" id="medical-prof">
-          <i class="fa-regular fa-flag-usa"></i>
+        <img src={US} className="US-icon"/>
           <h3>United States Based</h3>
         </div>
       </div>
