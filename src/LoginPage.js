@@ -1,11 +1,13 @@
-// typed rafce tab
 
 import React from 'react'
+import LoginButton from './/Components/LoginButton';
 
 const LoginPage = () => {
   return (
     <div>
-      hello
+      Login below to save your nearby locations:
+      <LoginButton /> {}
+
     </div>
   )
 }
