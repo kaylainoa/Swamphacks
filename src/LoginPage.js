@@ -8,7 +8,6 @@ const LoginPage = () => {
     <div>
       Login below to save your nearby locations:
       <LoginButton /> {}
-      <ClinicFinder /> {}
 
     </div>
   )
