@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Chatbot.css';
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 function Chatbot() {
@@ -9,6 +10,8 @@ function Chatbot() {
             sender: "Gemini",
         },
     ]);
+
+    const [isPopupOpen, setPopupOpen] = useState(false); 
 
     const handleChange = (event) => {
         setInput(event.target.value);
@@ -34,7 +37,7 @@ function Chatbot() {
     async function processMessageToGemini(userInput) {
         try {
             // Initialize the GoogleGenerativeAI client
-            const genAI = new GoogleGenerativeAI("API KEY"); // Replace with your actual API key
+            const genAI = new GoogleGenerativeAI("AIzaSyCRY79dncwxaKPP5WffvNIDJoVVh0g5xm0");
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
             // Generate content using the user's input
@@ -62,35 +65,57 @@ function Chatbot() {
         }
     }
 
+    const togglePopup = () => {
+        setPopupOpen(!isPopupOpen); 
+    };
+
     return (
-        <div className="container">
-            <div className="response-area">
-                {messages.map((message, index) => (
-                    <div
-                        key={index}
-                        className={
-                            message.sender === "Gemini"
-                                ? "gpt-message message"
-                                : "user-message message"
-                        }
-                    >
-                        {message.message}
+        
+        <div>
+            {/* Button to open the chatbot popup */}
+            <button className="open-chatbot-button" onClick={togglePopup}>
+                Open Chatbot
+            </button>
+
+            {/* Chatbot Popup */}
+            {isPopupOpen && (
+                <div className="chatbot-popup">
+                    <div className="popup-content">
+                        <h2>Chat with Gemini</h2>
+                        <div className="response-area">
+                            {messages.map((message, index) => (
+                                <div
+                                    key={index}
+                                    className={
+                                        message.sender === "Gemini"
+                                            ? "gpt-message message"
+                                            : "user-message message"
+                                    }
+                                >
+                                    {message.message}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="prompt-area">
+                            <input
+                                type="text"
+                                placeholder="Send a message..."
+                                value={input}
+                                onChange={handleChange}
+                            />
+                            <button className="submit" type="submit" onClick={handleSend}>
+                                Send
+                            </button>
+                        </div>
+                        <button className="close-popup" onClick={togglePopup}>
+                            Close Chatbot
+                        </button>
                     </div>
-                ))}
-            </div>
-            <div className="prompt-area">
-                <input
-                    type="text"
-                    placeholder="Send a message..."
-                    value={input}
-                    onChange={handleChange}
-                />
-                <button className="submit" type="submit" onClick={handleSend}>
-                    Send
-                </button>
-            </div>
+                </div>
+            )}
         </div>
     );
 }
+
 
 export default Chatbot;
