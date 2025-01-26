@@ -1,5 +1,5 @@
 # My Body My Place: A first time SwampHacks submission
-My Body My Place was developed within 24 hours by Sienna Perez, Kayla Inoa, Adora Lin, and Pranathi Madishetty during the University of Florida's SwampHacks X. This was all of our first times participating in and completing a hackathon and we learned a lot.
+My Body My Place was developed within 24 hours by Sienna Perez, Kayla Inoa, Adora Lin, and Pranathi Madishetty during the University of Florida's SwampHacks X. This was all of our first times participating in and completing a hackathon and we learned a lot. You can find more on our Devpost!: https://devpost.com/software/my-body-my-place?ref_content=my-projects-tab&ref_feature=my_projects
 
 # Our Product: 
 The primary motivation behind the development of this website was to ensure women have access to abortion clinics during these times. We aimed to provide not only a system for locating nearby clinics but also a supportive chatbot and educational map to address questions about abortion and reproductive rights near you.
