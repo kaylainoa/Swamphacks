@@ -34,7 +34,7 @@ function Chatbot() {
     async function processMessageToGemini(userInput) {
         try {
             // Initialize the GoogleGenerativeAI client
-            const genAI = new GoogleGenerativeAI("API KEY"); // Replace with your actual API key
+            const genAI = new GoogleGenerativeAI("AIzaSyCRY79dncwxaKPP5WffvNIDJoVVh0g5xm0"); // Replace with your actual API key
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
             // Generate content using the user's input
