@@ -1,42 +1,109 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import './App.css';
-import mapData from './gadm41_USA_1.json'; // Assuming this file is in the same folder
-import ReactDOM from 'react-dom';
+import mapData from './gadm41_USA_1.json'; // GeoJSON data for the map
+
+const laws = {
+  Alabama: "Banned",
+  Alaska: "Generally Legal",
+  Arizona: "Limited Ban",
+  Arkansas: "Banned",
+  California: "Legal",
+  Colorado: "Legal",
+  Connecticut: "Legal",
+  Delaware: "Legal",
+  "District of Columbia": "Legal",
+  Florida: "Limited Ban",
+  Georgia: "Limited Ban",
+  Hawaii: "Legal",
+  Idaho: "Banned",
+  Illinois: "Legal",
+  Indiana: "Banned",
+  Iowa: "Limited Ban",
+  Kansas: "Limited Ban",
+  Kentucky: "Banned",
+  Louisiana: "Banned",
+  Maine: "Legal",
+  Maryland: "Legal",
+  Massachusetts: "Legal",
+  Michigan: "Legal",
+  Minnesota: "Legal",
+  Mississippi: "Banned",
+  Missouri: "Banned",
+  Montana: "Banned",
+  Nebraska: "Limited Ban",
+  Nevada: "Legal",
+  "New Hampshire": "Legal",
+  "New Jersey": "Legal",
+  "New Mexico": "Legal",
+  "New York": "Legal",
+  "North Carolina": "Limited Ban",
+  "North Dakota": "Banned",
+  Ohio: "Limited Ban",
+  Oklahoma: "Banned",
+  Oregon: "Legal",
+  Pennsylvania: "Legal",
+  "Rhode Island": "Legal",
+  "South Carolina": "Limited Ban",
+  "South Dakota": "Banned",
+  Tennessee: "Banned",
+  Texas: "Banned",
+  Utah: "Limited Ban",
+  Vermont: "Legal",
+  Virginia: "Limited Ban",
+  Washington: "Legal",
+  "West Virginia": "Banned",
+  Wisconsin: "Banned",
+  Wyoming: "Banned",
+};
 
 const USAMap = () => {
+  const [hoveredState, setHoveredState] = useState(null); // State to track hovered state name
+
   return (
-    <div className= 'map-container'>
+    <div className="map-container">
+      {/* Display hovered state's law */}
+      <div className="info-box">
+        {hoveredState ? (
+          <p>
+            <strong>{hoveredState}</strong>: {laws[hoveredState] || "No data available"}
+          </p>
+        ) : (
+          <p>Hover over a state to see its law.</p>
+        )}
+      </div>
+
       <ComposableMap>
         <ZoomableGroup>
-        <Geographies geography={mapData}>
-          {({ geographies }) =>
-            geographies.map((geo) => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                style={{
-                  default: {
-                    fill: "#ffffff", // Default color
-                    outline: "none", // Remove outline for a cleaner look
-                  },
-                  hover: {
-                    fill: "#fb6f92", // Color on hover
-                    cursor: "pointer", // Show pointer cursor on hover
-                  },
-                }}
-              />
-            ))
-          }
-        </Geographies>
+          <Geographies geography={mapData}>
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                const stateName = geo.properties.NAME_1; // Adjust based on your GeoJSON's state name field
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    onMouseEnter={() => setHoveredState(stateName)} // Set the hovered state name
+                    onMouseLeave={() => setHoveredState(null)} // Clear the state name on mouse leave
+                    style={{
+                      default: {
+                        fill: "#ffffff", // Default color
+                        outline: "none",
+                      },
+                      hover: {
+                        fill: "#fb6f92", // Highlight color on hover
+                        cursor: "pointer",
+                      },
+                    }}
+                  />
+                );
+              })
+            }
+          </Geographies>
         </ZoomableGroup>
       </ComposableMap>
     </div>
   );
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(<USAMap />, document.getElementById("app"));
-});
 
 export default USAMap;
