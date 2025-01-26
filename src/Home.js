@@ -7,7 +7,7 @@ import US from './Assets/united-states.png';
 import pfp from './Assets/About_Us.png';
 
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import USMap from "./USMap";
+import USAMap from "./USMap.js";
 import {Link} from 'react-router-dom';
 
 
@@ -56,8 +56,8 @@ const Home = () => {
 
       {/* usa map section  */}
       <div className="USAlaws">
-        <h2>Stay Informed</h2>
-        <USMap />
+      <h2>Stay Informed</h2>
+        <USAMap />
       </div>
 
       
