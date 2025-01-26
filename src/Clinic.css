@@ -83,7 +83,7 @@
   .search-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   
   
@@ -101,7 +101,7 @@
   }
   
   .map-container {
-    width: 65%;
+    width: 70%;
     height: 500px;
   }
   
