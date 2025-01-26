@@ -8,7 +8,7 @@ const Navbar = () => {
 
     <div className="navbar">
       <div className="navbar-left">
-        <span className="navbar-text">Abortion Title</span>
+        <span className="navbar-text">My Body My Place</span>
       </div>
 
       <div className="navbar-right">
