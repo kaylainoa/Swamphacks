@@ -113,7 +113,7 @@ p {
 
 .Women2 {
   width: 300%; 
-  max-width: 450px; 
+  max-width: 400px; 
   height: auto; 
   
 }
@@ -134,6 +134,19 @@ p {
 .App-link {
   color: #61dafb;
 }
+
+
+/* USA Laws section */
+
+.USAlaws {
+  background-color: #ffe5ec;
+  
+}
+
+
+
+
+
 
 @keyframes App-logo-spin {
   from {
