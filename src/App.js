@@ -6,6 +6,8 @@ import Clinic from "./Clinic.js";
 //import ClinicFinder from ".//Components/ClinicFinder.js";
 import Navbar from ".//Components/Navbar.js";
 import MagicBox from ".//Components/MagicBox.js";
+import Chatbot from ".//Chatbot.js";
+
 
 import{
   BrowserRouter as Router,
@@ -26,7 +28,7 @@ function App() {
           <Route path="/clinic" element={<Clinic/>}/>
 
         </Routes>
-        <MagicBox />;
+        <Chatbot />
       </Router>
     </div>
 
