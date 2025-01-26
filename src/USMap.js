@@ -59,6 +59,17 @@ const laws = {
 
 const USAMap = () => {
   const [hoveredState, setHoveredState] = useState(null); // State to track hovered state name
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseEnter = (stateName, evt) => {
+    setHoveredState(stateName);
+    setTooltipPosition({ x: evt.pageX + 10, y: evt.pageY + 10 }); // Offset to avoid overlapping the cursor
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredState(null);
+  };
+
 
   return (
     <div className="map-container">
@@ -74,7 +85,7 @@ const USAMap = () => {
       </div>
 
       <ComposableMap>
-        <ZoomableGroup>
+        <ZoomableGroup center={[-95, 37]} zoom={1} disableZooming={true} disablePanning={true}>
           <Geographies geography={mapData}>
             {({ geographies }) =>
               geographies.map((geo) => {

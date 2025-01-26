@@ -141,6 +141,15 @@ p {
 .USAlaws {
   background-color: #ffe5ec;
   
+  
+}
+
+.map-container {
+  width: 100%;
+  max-width: 800px; /* Define a reasonable max width */
+  height: 1000; /* Set a fixed height */
+  margin: 0 auto; /* Center the map */
+  position: relative;
 }
 
 
