@@ -7,7 +7,7 @@ const LoginButton = () => {
   const navigate = useNavigate(); // useHistory() for v5 
   const handleLogin = () => { 
     loginWithRedirect({
-     redirectUri: window.location.origin + "/loggedin" // Explicit redirect URI after login 
+     redirectUri: window.location.origin
      }); 
     }; 
   return <button onClick={handleLogin}>Log In</button>; };
