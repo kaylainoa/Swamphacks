@@ -1,0 +1,45 @@
+/* Center the button horizontally at the top of the page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Aligns the content at the top */
+    height: 100vh;
+    margin: 0;
+    background-color: #ffe4e9; /* Optional background color */
+    font-family: Arial, sans-serif; /* Optional: set a font for the page */
+  }
+  
+  /* Style the button */
+  .login-button {
+    background-color: #ffb5ca;
+    border: none;
+    padding: 15px 30px;  /* Adjust padding */
+    font-size: 1.2em;     /* Font size */
+    color: rgb(20, 7, 13);
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;  
+
+  }
+  
+  /* Hover effect */
+  .login-button:hover {
+    background-color: #f58ba9; /* Darker pink when hovered */
+  }
+  
+
+  
+  .clinic_title{
+    margin-top: 50px;
+
+    font-family: DM Serif Display;
+    font-weight: bold;
+    color: #fb6389;
+    text-align: left;
+    font-size: calc(20px + 2vmin);
+}
