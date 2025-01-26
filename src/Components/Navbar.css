@@ -3,9 +3,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5px;
+    padding: 3px 10px;
     background-color: #aa8282;
     color: white;
+    font-family: DM Serif Display;
+    height: 35px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(52, 34, 34, 0.2); 
+    box-sizing: border-box;
+
   }
   
   .navbar-left {
@@ -14,22 +23,23 @@
   
   .navbar-text {
     font-size: 20px;
-    font-weight: bold;
+    
+    
   }
   
   /* Navbar Links Styling */
   .navbar-links {
     display: flex;
     justify-content: flex-start; 
-    gap: 25px; 
+    gap: 10px; 
   }
   
   .navbar-link {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 8px 10px;
+    border-radius: 3px;
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
   

@@ -25,6 +25,10 @@
     font-size: calc(40px + 4vmin);
 }
 
+.radius-slider{
+  margin-bottom: 20px;
+}
+
 /* Search bar styling */
 .search-bar {
     padding: 15px;
@@ -45,15 +49,15 @@
 
 /* Overall container for the clinic page */
 .clinic-container {
-    background-color: #fff3f6; 
+    background-color: #ffebf0; 
     text-align: center;
-    padding: 20px;
+    padding: 60px;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     height: 100vh;
     justify-content: space-between;
-    border-radius: 50px;
+    border-radius: 0px;
   }
   
   /* Header styling */
@@ -93,7 +97,7 @@
   .clinic-list {
     width: 30%;
     padding-right: 20px;
-    margin-top: 120px; 
+    margin-top: 10px; 
   }
   
   .map-container {
@@ -115,13 +119,39 @@
   }
 
   h2 {
-    padding-top: 10px;
-    padding-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 25px;
 
-    margin-top: 80px;
+    margin-top: 40px;
     margin-bottom: 5px;
     margin-left: 10px;
     margin-right: 200px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; 
+  width: 10%; 
+  height: 7px; 
+  background: #fb6389;
+  border-radius: 5px; 
+  outline: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  margin-left: 15px;
+
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -15px;
+  width: 20px; 
+  height: 20px; 
+  background: #fb6389; 
+  border-radius: 50%;
+  cursor: pointer; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
+  transition: background 0.3s;
 }

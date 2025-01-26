@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import './Clinic.css';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-const containerStyle = {
+const containerStyle = { // map sizing
   width: '100%',
+<<<<<<< HEAD
   height: '500px',
+=======
+  height: '100%', 
+>>>>>>> e0e016e03c5da7c2b17896f5a174676d5f3411a6
 };
 
 const Clinic = () => {
@@ -12,6 +16,8 @@ const Clinic = () => {
   const [clinics, setClinics] = useState([]);
   const [clinicFound, setClinicFound] = useState(null);
   const [defaultMap, setDefaultMap] = useState({ lat: 27.994402, lng: -81.760254 });
+  const [radius, setRadius] = useState(10);
+
   const mapsApiKey = 'AIzaSyBaE61HadXfnURwrXP7uk9hM16qJNiyivk';
 
   const geocodeZipCode = async (zip) => {
@@ -28,12 +34,15 @@ const Clinic = () => {
     });
   };
 
-  const searchNearbyClinics = (location) => {
+const searchNearbyClinics = (location) => {
     const service = new window.google.maps.places.PlacesService(document.createElement('div'));
+
+    // Convert miles to meters for the API
+    const radiusInMeters = radius * 1609.34;
 
     const request = {
       location: location,
-      radius: 5000, // 5 km radius
+      radius: radiusInMeters, // Dynamic radius
       keyword: 'abortion clinic',
     };
 
@@ -71,6 +80,26 @@ const Clinic = () => {
         <button className="search-button" onClick={handleSearch}>
           Search Clinics
         </button>
+      </div>
+
+      {/* Radius Slider */}
+      <div className="radius-slider">
+        <label htmlFor="radius">Search Radius: {radius} miles</label>
+        <input
+          type="range"
+          id="radius"
+          min="10"
+          max="31"
+          step="1"
+          value={radius}
+          onChange={(e) => setRadius(Number(e.target.value))}
+          list="radius-options"
+        />
+        <datalist id="radius-options">
+          <option value="10" label="10" />
+          <option value="20" label="20" />
+          <option value="30" label="30" />
+        </datalist>
       </div>
 
       <div className="content-container">

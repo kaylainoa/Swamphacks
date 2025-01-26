@@ -6,15 +6,20 @@ const Chatbot = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const openApiKey = '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'
+
   // Function to send the message to OpenAI and get the response
   const sendMessage = async (e) => {
     e.preventDefault();
     if (!userMessage.trim()) return; // Don't send if empty
-
+  
     // Add the user's message to chat history
-    setChatHistory([...chatHistory, { sender: "user", message: userMessage }]);
+    setChatHistory((prevHistory) => [
+      ...prevHistory,
+      { sender: "user", message: userMessage },
+    ]);
     setLoading(true);
-
+  
     try {
       // Send the user's message to OpenAI's API
       const response = await axios.post(
@@ -29,33 +34,37 @@ const Chatbot = () => {
         },
         {
           headers: {
-            "Authorization": `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`, // Securely use the API key
+            "Authorization": `Bearer ${openApiKey}`, // Securely use the API key
             "Content-Type": "application/json",
           },
         }
       );
-
-      
-      const botResponse = response.data.choices[0].message.content.trim(); 
-
-      
-      setChatHistory([
-        ...chatHistory,
+  
+      // Process the response from OpenAI
+      const botResponse = response.data.choices[0].message.content.trim();
+  
+      // Add both user and bot messages to chat history
+      setChatHistory((prevHistory) => [
+        ...prevHistory,
         { sender: "user", message: userMessage },
         { sender: "bot", message: botResponse },
       ]);
-      //setUserMessage(""); 
+  
     } catch (error) {
-      console.error("Error sending message to OpenAI API:", error.response || error);
-      setChatHistory([
-        ...chatHistory,
+      // Debugging the error:
+      console.error("Error sending message to OpenAI API:", error);
+  
+      // Fallback for error handling in UI
+      setChatHistory((prevHistory) => [
+        ...prevHistory,
         { sender: "bot", message: "Sorry, something went wrong. Please try again." },
       ]);
     } finally {
-      setLoading(false); 
+      setLoading(false); // End loading state
     }
   };
-
+  
+      
   return (
     <div style={{ width: "400px", margin: "0 auto", padding: "10px", border: "1px solid #ccc", borderRadius: "8px" }}>
       <h2>AI Chatbot</h2>
