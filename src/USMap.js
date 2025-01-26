@@ -1,53 +1,42 @@
-import React, { useState } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import states from './states.json';
+import React from 'react';
+import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
+import './App.css';
+import mapData from './gadm41_USA_1.json'; // Assuming this file is in the same folder
+import ReactDOM from 'react-dom';
 
-
-const USMap = () => {
-  const [tooltipContent, setTooltipContent] = useState('');
-
-  // GeoJSON data for the U.S. map
-  const geoUrl = './states.json';
-
-
-  const handleStateClick = (stateName) => {
-    alert(`Redirecting to abortion laws for ${stateName}`);
-    // You can use window.location.href or React Router for navigation
-  };
-
+const USAMap = () => {
   return (
-    <div>
-      <h2>{tooltipContent || 'Hover over a state'}</h2>
-      <ComposableMap
-        projection="geoAlbersUsa"
-        width={800}
-        height={600}
-        style={{ maxWidth: '100%', margin: '0 auto' }}
-      >
-        <Geographies geography={geoUrl}>
+    <div className= 'map-container'>
+      <ComposableMap>
+        <ZoomableGroup>
+        <Geographies geography={mapData}>
           {({ geographies }) =>
-            geographies.map((geo) => {
-              const stateName = geo.properties.name; // Get state name from properties
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  onMouseEnter={() => setTooltipContent(stateName)}
-                  onMouseLeave={() => setTooltipContent('')}
-                  onClick={() => handleStateClick(stateName)}
-                  style={{
-                    default: { fill: '#D6D6DA', outline: 'none' },
-                    hover: { fill: '#F53', outline: 'none' },
-                    pressed: { fill: '#E42', outline: 'none' },
-                  }}
-                />
-              );
-            })
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                style={{
+                  default: {
+                    fill: "#ffffff", // Default color
+                    outline: "none", // Remove outline for a cleaner look
+                  },
+                  hover: {
+                    fill: "#fb6f92", // Color on hover
+                    cursor: "pointer", // Show pointer cursor on hover
+                  },
+                }}
+              />
+            ))
           }
         </Geographies>
+        </ZoomableGroup>
       </ComposableMap>
     </div>
   );
 };
 
-export default USMap;
+document.addEventListener("DOMContentLoaded", () => {
+  ReactDOM.render(<USAMap />, document.getElementById("app"));
+});
+
+export default USAMap;
