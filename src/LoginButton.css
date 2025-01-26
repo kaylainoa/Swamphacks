@@ -1,46 +1,85 @@
-/* Center the button horizontally at the top of the page */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;  
-    height: 100vh;
-    margin: 0;
-    background-color: #ffffff; 
-    font-family: Arial, sans-serif; 
+/* Style for the Login Page container */
+.login-page {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Full viewport height */
+  background-color: #f9f9f9; /* Light background for the page */
+  padding: 20px;
+}
+
+/* Centered box containing the content */
+.login-box {
+  background-color: #fff; /* White background for the box */
+  border-radius: 15px; /* Rounded corners */
+  padding: 40px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  max-width: 400px; /* Max width of the box */
+  width: 100%; /* Make box responsive */
+  text-align: center; /* Center the content inside */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Ensures everything is centered */
+}
+
+/* Style for the clinic title */
+.login-prompt {
+  font-family: DM Serif Display;
+  font-size: 32px; /* Large size for the title */
+  color: #fb6f92; /* Soft pinkish color */
+  margin-bottom: 20px; /* Space between title and button */
+  font-weight: bold; /* Make title bold */
+  text-align: center; /* Ensures the title is centered */
+}
+
+/* Style for the paragraph with the starting message */
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px; /* Adjust the font size of the message */
+  color: #000000; /* Dark color for the text */
+  margin-bottom: 30px; /* Space between message and button */
+  text-align: center; /* Center the message text */
+}
+
+/* Style for the Login Button */
+.login-button {
+  background-color: #ffb5ca;
+  border: none;
+  padding: 15px 30px; 
+  font-size: 1.2em;    
+  color: rgb(20, 7, 13);
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;  
+  width: 100%; /* Make button take full width of the box */
+  max-width: 300px; /* Max width to keep it manageable */
+}
+
+/* Hover effect for the login button */
+.login-button:hover {
+  background-color: #f58ba9; 
+}
+
+/* Optional: Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .login-prompt {
+    font-size: 20px; /* Adjust title size on smaller screens */
   }
-  
-  /* Style the button */
+
+  .login-box {
+    padding: 30px; /* Reduce padding on smaller screens */
+  }
+
+  p {
+    font-size: 18px; /* Adjust the font size of the paragraph */
+  }
+
   .login-button {
-    background-color: #ffb5ca;
-    border: none;
-    padding: 15px 30px; 
-    font-size: 1.2em;    
-    color: rgb(20, 7, 13);
-    cursor: pointer;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;  
-
+    width: 100%; /* Ensure button takes full width on smaller screens */
   }
-  
-  /* Hover effect */
-  .login-button:hover {
-    background-color: #f58ba9; 
-  }
-  
-
-  
-  .clinic_title{
-    margin-top: 50px;
-
-    font-family: DM Serif Display;
-    font-weight: bold;
-    color: #fb6389;
-    text-align: left;
-    font-size: calc(20px + 2vmin);
 }
