@@ -6,6 +6,7 @@
     padding: 3px 10px;
     background-color: #aa8282;
     color: white;
+    font-family: DM Serif Display;
     height: 35px;
     position: fixed;
     top: 0;
@@ -22,7 +23,8 @@
   
   .navbar-text {
     font-size: 20px;
-    font-weight: bold;
+    
+    
   }
   
   /* Navbar Links Styling */
