@@ -21,5 +21,5 @@ My Body My Place is a React.js web app that deploys on a local host with Node. I
 **Gemini API:** npm install @google/generative-ai
 **Google Maps API:** npm install @react-google-maps/api
 **Auth0 API:** npm install @auth0/auth0-react
-**React-simple-maps:** npm install react-simple-maps **note* simple maps is incompatible with newer react versions, some of us had to downgrade
-Node and React must also be installed. Run the page using "npm start"
+**React-simple-maps:** npm install react-simple-maps **note* simple maps is incompatible with newer react versions, some of us had to downgrade.
+Node and React must also be installed. Run the page using "npm start".
