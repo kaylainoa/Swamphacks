@@ -38,7 +38,7 @@ const Home = () => {
       <div className="About-Us">
         <div className="column">
           <h2> About Us</h2>
-          <p>At (Your Website Name), we’re committed to helping women easily access nearby abortion resources. 
+          <p>At <em>My Body My Place</em>, we’re committed to helping women easily access nearby abortion resources. 
           Our platform connects women with safe, confidential healthcare providers, clinics, and support services,
           offering up-to-date information to help them make informed decisions. We believe every woman deserves the 
           right to choose, and our mission is to remove barriers to reproductive healthcare by providing trusted 

@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import './Clinic.css';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-export const Clinic = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+const containerStyle = {
+  width: '100%',
+  height: '500px',
+};
+
+const Clinic = () => {
+  const [zipCode, setZipCode] = useState('');
+  const [clinics, setClinics] = useState([]);
+  const [clinicFound, setClinicFound] = useState(null);
+  const [defaultMap, setDefaultMap] = useState({ lat: 27.994402, lng: -81.760254 });
+  const mapsApiKey = 'AIzaSyBaE61HadXfnURwrXP7uk9hM16qJNiyivk';
 
   const geocodeZipCode = async (zip) => {
     const geocoder = new window.google.maps.Geocoder();
@@ -47,6 +57,7 @@ export const Clinic = () => {
   return (
     <div className="clinic-container">
       <div className="clinic_title">Clinics</div>
+      <h2 className="clinic_head">Find a Clinic Near You</h2>
 
       {/* Search Bar */}
       <div className="search-container">
@@ -62,36 +73,11 @@ export const Clinic = () => {
         </button>
       </div>
 
-      {/* Map Integration */}
-      <LoadScript googleMapsApiKey={mapsApiKey} libraries={['places']}>
-        <GoogleMap mapContainerStyle={containerStyle} center={defaultMap} zoom={15}>
-          {clinics.map((clinic, index) => (
-            <Marker
-              key={index}
-              position={clinic.geometry.location}
-              onClick={() => setClinicFound(clinic)}
-            />
-          ))}
-
-          {clinicFound && (
-            <InfoWindow
-              position={clinicFound.geometry.location}
-              onCloseClick={() => setClinicFound(null)}
-            >
-              <div>
-                <h4>{clinicFound.name}</h4>
-                <p>{clinicFound.vicinity}</p>
-              </div>
-            </InfoWindow>
-          )}
-        </GoogleMap>
-      </LoadScript>
-
-      {/* Clinic List */}
-      <div id="results" style={{ marginTop: '20px' }}>
-        {clinics.length > 0 ? (
-          <div>
-            <h3>Closest Clinics:</h3>
+      <div className="content-container">
+        {/* Clinic List on the left */}
+        <div className="clinic-list">
+          <h3>Closest Clinics:</h3>
+          {clinics.length > 0 ? (
             <ul>
               {clinics.map((clinic, i) => (
                 <li key={i}>
@@ -103,10 +89,37 @@ export const Clinic = () => {
                 </li>
               ))}
             </ul>
-          </div>
-        ) : (
-          <p>No clinics found</p>
-        )}
+          ) : (
+            <p>No clinics found</p>
+          )}
+        </div>
+
+        {/* Map Integration on the right */}
+        <div className="map-container">
+          <LoadScript googleMapsApiKey={mapsApiKey} libraries={['places']}>
+            <GoogleMap mapContainerStyle={containerStyle} center={defaultMap} zoom={15}>
+              {clinics.map((clinic, index) => (
+                <Marker
+                  key={index}
+                  position={clinic.geometry.location}
+                  onClick={() => setClinicFound(clinic)}
+                />
+              ))}
+
+              {clinicFound && (
+                <InfoWindow
+                  position={clinicFound.geometry.location}
+                  onCloseClick={() => setClinicFound(null)}
+                >
+                  <div>
+                    <h4>{clinicFound.name}</h4>
+                    <p>{clinicFound.vicinity}</p>
+                  </div>
+                </InfoWindow>
+              )}
+            </GoogleMap>
+          </LoadScript>
+        </div>
       </div>
     </div>
   );
