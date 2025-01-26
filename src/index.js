@@ -15,7 +15,7 @@ root.render(
       domain="dev-870lb37ryyy22qz7.us.auth0.com"
       clientId="hbST0TFH3hiiax8bZkPCe8YFnStiQICN" // our client ID
       authorizationParams={{
-        redirect_uri: window.location.origin,
+        redirect_uri: window.location.origin + "/completedlogin"
       }}
     >
       <App /> {App}
