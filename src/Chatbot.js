@@ -39,9 +39,12 @@ const Chatbot = () => {
           },
         }
       );
+
+      console.log("Response from OpenAI:", response);
   
       // Process the response from OpenAI
-      const botResponse = response.data.choices[0].message.content.trim();
+      if(response && response.data && response.data.choices && response.data.choices[0]){
+        const botResponse = response.data.choices[0].message.content.trim();
   
       // Add both user and bot messages to chat history
       setChatHistory((prevHistory) => [
@@ -49,10 +52,20 @@ const Chatbot = () => {
         { sender: "user", message: userMessage },
         { sender: "bot", message: botResponse },
       ]);
+      } else{
+        throw new Error("No choices found in the response");
+      }
   
     } catch (error) {
       // Debugging the error:
       console.error("Error sending message to OpenAI API:", error);
+
+      if (error.response) {
+        console.error("Error response status:", error.response.status); // Log HTTP status code
+        console.error("Error response data:", error.response.data); // Log error details from the response
+      } else {
+        console.error("Error message:", error.message); // Log error message if no response is available
+      }
   
       // Fallback for error handling in UI
       setChatHistory((prevHistory) => [

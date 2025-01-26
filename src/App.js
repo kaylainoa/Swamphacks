@@ -2,9 +2,10 @@ import './App.css';
 import Home from "./Home.js";
 import LoginPage from "./LoginPage.js";
 import Clinic from "./Clinic.js";
-import Chatbot from "./Chatbot.js";
+//import Chatbot from "./Chatbot.js";
 //import ClinicFinder from ".//Components/ClinicFinder.js";
 import Navbar from ".//Components/Navbar.js";
+import MagicBox from ".//Components/MagicBox.js";
 
 import{
   BrowserRouter as Router,
@@ -25,7 +26,7 @@ function App() {
           <Route path="/clinic" element={<Clinic/>}/>
 
         </Routes>
-        <Chatbot />
+        <MagicBox />;
       </Router>
     </div>
 
