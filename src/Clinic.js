@@ -4,7 +4,7 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 
 const containerStyle = { // map sizing
   width: '100%',
-  height: '100%', 
+  height: '500px',
 };
 
 const Clinic = () => {
