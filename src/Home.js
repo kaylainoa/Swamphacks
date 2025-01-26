@@ -3,8 +3,7 @@ import './App.css';
 import anonymous from './Assets/anonymous.png';
 import doctor from './Assets/doctor.png';
 import US from './Assets/united-states.png';
-//import aboutusphoto from './Assets/women2.jpg';
-import pfp from './Assets/About_Us.png';
+import aboutus from './Assets/about-us.jpeg';
 
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import USAMap from "./USMap.js";
@@ -48,7 +47,7 @@ const Home = () => {
         </div>
         <div className="column">
           <div className="about-image">
-            <img src={pfp} className="Women2"/>
+            <img src={aboutus} className="about-us"/>
           </div>
         </div>
       </div>
