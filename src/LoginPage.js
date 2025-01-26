@@ -6,9 +6,8 @@ import './LoginButton.css';
 const LoginPage = () => {
   return (
     <div>
-      <div className="clinic_title">Login below to save your nearby locations:</div>
+      <div className="login_title">Login below to save your nearby locations:</div>
 
-      {/* <h1>Login below to save your nearby locations:</h1> */}
       <LoginButton />
     </div>
   );
